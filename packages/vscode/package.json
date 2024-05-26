@@ -1,0 +1,55 @@
+{
+	"private": true,
+	"name": "webc-vscode",
+	"version": "0.0.1",
+	"icon": "assets/icon.png",
+	"displayName": "WebC Tools",
+	"description": "WebC Language Tooling for Visual Studio Code",
+	"author": "Hawk Ticehurst",
+	"engines": {
+		"vscode": "^1.82.0"
+	},
+	"main": "./dist/client.js",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/hawkticehurst/webc-vscode.git",
+		"directory": "packages/vscode"
+	},
+	"activationEvents": [
+		"onLanguage:webc"
+	],
+	"contributes": {
+		"languages": [
+			{
+				"id": "webc",
+				"aliases": ["WebC", "webc"],
+				"extensions": [".webc"],
+				"configuration": "./languages/webc-language-configuration.json",
+				"icon": {
+						"light": "./assets/lang-icon-dark.png",
+						"dark": "./assets/lang-icon-dark.png"
+				}
+			}
+		],
+		"grammars": [{
+			"language": "webc",
+			"scopeName": "source.webc",
+			"path": "./syntaxes/webc.tmLanguage.json"
+		}]
+	},
+	"scripts": {
+		"build": "node scripts/build -- --minify",
+		"watch": "npm run build -- --watch",
+		"pack": "npm run build && vsce package --pre-release",
+		"release": "npm run build && vsce publish --pre-release"
+	},
+	"devDependencies": {
+		"@webc/language-server": "workspace:*",
+		"@types/vscode": "^1.82.0",
+		"@volar/language-server": "~2.2.0",
+		"@volar/vscode": "~2.2.0",
+		"esbuild": "latest",
+		"vsce": "latest",
+		"vscode-languageclient": "^9.0.1"
+	}
+}

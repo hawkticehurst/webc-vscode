@@ -1,0 +1,19 @@
+---node
+const express = require('express');
+---
+
+<!-- type any css in following block to get css completion -->
+<style>.foo { color: blue; }</style>
+
+<!-- JS script block support -->
+<script>
+	let foo = 123;
+</script>
+
+<!-- TS script block support -->
+<script>
+	let bar = 123;
+</script>
+
+<!-- type ">" to trigger auto close --> 
+<div></div>

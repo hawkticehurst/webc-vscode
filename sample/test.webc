@@ -1,0 +1,126 @@
+<header>
+	<button id="menu-btn">Menu</button>
+	<nav>
+		<a href="/">Home</a>
+		<a href="/about">About</a>
+		<a href="/projects">Projects</a>
+		<a href="/writing">Writing</a>
+		<a href="/reviews">Reviews</a>
+	</nav>
+</header>
+
+<script>
+	window.addEventListener('load', () => {
+		const menuBtn = document.querySelector('#menu-btn');
+		menuBtn.addEventListener('click', () => {
+			menuBtn.toggleAttribute('data-open');
+		});
+	});
+</script>
+
+<style>
+	header {
+		position: fixed;
+		left: 50%;
+		transform: translateX(-50%);
+		top: 2rem;
+		z-index: 1;
+	}
+	#menu-btn {
+		display: none;
+		color: inherit;
+		background-color: var(--nav-background);
+		border: none;
+		border-radius: var(--site-corner-radius);
+		padding: 8px 16px;
+		font-weight: 500;
+		text-align: center;
+	}
+	#menu-btn::after {
+		content: '+';
+		position: absolute;
+		right: 2.4rem;
+		top: 2px;
+		font-size: 1.4rem;
+	}
+	#menu-btn[data-open]::after {
+		content: '×';
+	}
+	#menu-btn:focus-visible {
+		outline-style: solid;
+		outline-color: var(--focus-outline);
+		outline-width: 2px;
+		border-radius: 2px;
+	}
+	#menu-btn:hover {
+		cursor: pointer;
+	}
+	nav {
+		display: flex;
+		flex-direction: row;
+		gap: 24px;
+		background-color: var(--nav-background);
+		border-radius: var(--site-corner-radius);
+		padding: 8px 28px;
+		white-space: nowrap;
+	}
+	nav a {
+		color: var(--text-primary);
+		font-weight: 500;
+		border-radius: 8px;
+		text-decoration: none;
+		padding: 0;
+		margin: 0;
+	}
+	nav a:hover {
+		text-decoration: underline;
+		color: var(--text-primary);
+		outline: none;
+	}
+	nav a:focus-visible {
+		outline-style: solid;
+		outline-color: var(--focus-outline);
+		outline-width: 2px;
+		border-radius: 2px;
+	}
+	@media (max-width: 768px) {
+		header {
+			width: 100%;
+		}
+		#menu-btn {
+			display: block;
+			width: 100%;
+			height: auto;
+			padding: 8px 14px;
+		}
+		#menu-btn[data-open] + nav {
+			display: flex;
+		}
+		nav {
+			display: none;
+			width: 100%;
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 2px;
+			margin-top: 8px;
+			padding: 8px;
+		}
+		nav a {
+			width: 100%;
+			text-align: start;
+			padding: 6px 6px;
+			border-radius: 8px;
+		}
+		nav a:hover {
+			text-decoration: none;
+			color: var(--text-primary);
+			background-color: rgb(45, 45, 45);
+		}
+		nav a:focus-visible {
+			outline-style: solid;
+			outline-color: var(--focus-outline);
+			outline-width: 2px;
+			border-radius: 2px;
+		}
+	}
+</style>
