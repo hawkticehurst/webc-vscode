@@ -1,5 +1,4 @@
 import { ExtraServiceScript, forEachEmbeddedCode, type LanguagePlugin, type VirtualCode } from '@volar/language-core';
-import { log } from 'console';
 import type * as ts from 'typescript';
 import * as html from 'vscode-html-languageservice';
 
